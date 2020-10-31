@@ -2,7 +2,7 @@ import React from 'react';
 // import { StyleSheet, Text, View, ScrollView } from 'react-native';
 // import { Text, View, ScrollView } from 'react-native';
 // import { StyleSheet, Text, View, ScrollView, Dimensions } from 'react-native';
-import { Text, View, ScrollView, Dimensions } from 'react-native';
+import { Text, View, Button, ScrollView, Dimensions } from 'react-native';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 const SLIDE_DATA = [
@@ -12,6 +12,9 @@ const SLIDE_DATA = [
 ];
 
 class WelcomeScreen extends React.Component {
+  onStartButtonPress = () => {
+    this.props.navigation.navigate('main');
+  };
   renderSlides() {
     return SLIDE_DATA.map((slide, index) => {
       return (
@@ -22,6 +25,7 @@ class WelcomeScreen extends React.Component {
           <Text>{slide.title}</Text>
           <Text>{slide.text}</Text>
           <Text>{index + 1} / 3</Text>
+          <Button title='次へ' onPress={this.onStartButtonPress} />
         </View>
       );
     });
